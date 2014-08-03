@@ -316,8 +316,12 @@ class HtmlDom:
                     try:
                          import urllib.request as urllib2
                     except ImportError:
+                        try:
+                            import urllib2
+                        except ImportError:
+                            raise Exception( "urllib2 module not found" )
                          #For python3
-                         raise Exception( "urllib module not found" )
+                         #raise Exception( "urllib module not found" )
                     request = urllib2.Request(self.baseURL)
                     request.add_header('User-agent','Mozilla/9.876 (X11; U; Linux 2.2.12-20 i686, en; rv:2.0) Gecko/25250101 Netscape/5.432b1 (C-MindSpring)')
                     response = urllib2.urlopen(request)
