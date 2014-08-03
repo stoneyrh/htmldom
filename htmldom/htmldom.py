@@ -717,7 +717,7 @@ class HtmlDom:
      def getEncoding( self, response ):
           encoding = 'utf-8'
           for key,val in response.headers.items():
-               if key == 'Content-Type':
+               if key.lower() == 'content-type':
                     encoding = val.split(";")
                     try:
                          encoding = encoding[1].split('=')[1].strip()
